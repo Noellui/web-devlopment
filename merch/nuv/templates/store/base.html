@@ -8,7 +8,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
         body { display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* Navigation Styles */
         header { background-color: #1b365d; color: white; padding: 15px 30px; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 24px; font-weight: bold; text-decoration: none; color: white; }
@@ -17,22 +16,18 @@
         .nav-links > li { position: relative; padding: 10px 0; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; }
         
-        /* Dropdown Menus */
         .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: #2c4d75; min-width: 160px; list-style: none; border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .dropdown li a { display: block; padding: 10px 15px; }
         .dropdown li a:hover { background-color: #3b6291; }
         .nav-links > li:hover .dropdown { display: block; }
 
-        /* Search Bar */
         .search-box { display: flex; gap: 5px; }
         .search-box input { padding: 6px 10px; border-radius: 4px; border: 1px solid #ccc; }
         .search-box button { padding: 6px 12px; background-color: #ff6b00; color: white; border: none; border-radius: 4px; cursor: pointer; }
 
-        /* Main Content */
         main { flex: 1; padding: 40px 30px; text-align: center; }
         .welcome-banner { background-color: #f4f6f9; padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 5px solid #1b365d; }
         
-        /* Footer Styles */
         footer { background-color: #111; color: #ccc; padding: 30px; line-height: 1.6; }
         .footer-content { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; text-align: left; }
         .footer-section h3 { color: white; margin-bottom: 10px; }
@@ -41,13 +36,11 @@
 </head>
 <body>
 
-    <!-- Header & Navigation Bar -->
     <header>
         <div class="nav-container">
             <a href="{% url 'dashboard' %}" class="logo">NAV Logo</a>
             
             <ul class="nav-links">
-                <!-- Apparel Menu -->
                 <li>
                     <a href="#">Apparel &#9662;</a>
                     <ul class="dropdown">
@@ -68,7 +61,6 @@
                     </ul>
                 </li>
                 
-                <!-- Stationery Menu -->
                 <li>
                     <a href="#">Stationery &#9662;</a>
                     <ul class="dropdown">
@@ -79,7 +71,6 @@
                 </li>
             </ul>
 
-            <!-- Search Bar -->
             <form class="search-box" action="#" method="GET">
                 <input type="text" name="q" placeholder="Search products...">
                 <button type="submit">Search</button>
@@ -87,12 +78,10 @@
         </div>
     </header>
 
-    <!-- Main Dynamic Content Container -->
     <main>
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer Section -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
