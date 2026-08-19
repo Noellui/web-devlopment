@@ -1,6 +1,7 @@
-from django.http import HttpResponse
 from django.views.generic import TemplateView
-
+from .models import Product
+from django.shortcuts import render
+from django.views.generic import ListView
 class DashboardView(TemplateView):
     template_name = 'dashboard.html'
 
@@ -15,3 +16,8 @@ class HatsView(TemplateView):
 
 class AccessoriesView(TemplateView):
     template_name = 'accessories.html'
+
+class ProdectView(ListView):
+    model = Product
+    template_name='dashboard.html'
+    context_object_name = 'data'
