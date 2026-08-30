@@ -1,0 +1,13 @@
+{% extends 'seller_base.html' %}
+{% block content %}
+  <h2>Update: {{ object.p_title }}</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if object.p_img %}
+      <p>Current image:</p>
+      <img src="{{ object.p_img.url }}" width="100">
+    {% endif %}
+    <button type="submit">Update Product</button>
+  </form>
+{% endblock %}

@@ -1,11 +1,23 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from nuv import views
 from django.contrib import admin
+
 urlpatterns = [
-    path('', views.ProdectView.as_view(),name="dashboard"),
-    path('men/', views.MenView.as_view(),name="men"),
-    path('women/', views.WomenView.as_view(),name="women"),
-    path('hats/', views.HatsView.as_view(),name="hats"),
-    path('accessories/', views.AccessoriesView.as_view(),name="accessories"),
-    path('admin/',admin.site.urls),
-]
+    # ─── User URLs ───────────────────────────────
+    path('', views.DashboardView.as_view(), name="dashboard"),   # ← fixed
+    path('men/', views.MenView.as_view(), name="men"),
+    path('women/', views.WomenView.as_view(), name="women"),
+    path('hats/', views.HatsView.as_view(), name="hats"),
+    path('accessories/', views.AccessoriesView.as_view(), name="accessories"),
+
+    # ─── Seller URLs ─────────────────────────────
+    path('seller/', views.SellerDashboardView.as_view(), name='seller_dashboard'),
+    path('seller/products/', views.SellerProductsView.as_view(), name='seller_products'),
+    path('seller/add/', views.SellerAddProductView.as_view(), name='seller_add_product'),
+    path('seller/update/<int:pk>/', views.SellerUpdateProductView.as_view(), name='seller_update_product'),
+
+    path('admin/', admin.site.urls),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

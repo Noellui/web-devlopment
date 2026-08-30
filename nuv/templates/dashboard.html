@@ -69,8 +69,10 @@
 <div class="product-grid">
     {% for i in data %}
     <div class="product-card">
-        <img src="https://dummyimage.com/400x600/ccc2cc/000000&text={{ i.p_title }}" alt="{{ i.p_title }}">
-        <div class="card-body">
+        {% if i.p_img %}
+            <img src="{{ i.p_img.url }}" alt="{{ i.p_title }}">
+        {% endif %}
+            <div class="card-body">
             <h3 class="card-title">{{ i.p_title }}</h3>
             <p class="card-description">{{ i.p_description }}</p>
             <div class="card-footer">

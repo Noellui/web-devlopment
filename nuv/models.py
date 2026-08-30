@@ -21,10 +21,7 @@ class Product(models.Model):
     qty = models.PositiveIntegerField(
         default=0
     )
-    p_img_url = models.URLField(
-        max_length=500,
-        blank=True
-    )
+    p_img = models.ImageField(upload_to='products/')
 
     def __str__(self):
         return self.p_title

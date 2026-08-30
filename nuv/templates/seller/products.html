@@ -1,0 +1,38 @@
+{% extends 'seller_base.html' %}
+{% block content %}
+  <h2>All Products</h2>
+  <table border="1" cellpadding="10">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Active</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>
+          {% if product.p_img %}
+            <img src="{{ product.p_img.url }}" width="60" height="60">
+          {% endif %}
+        </td>
+        <td>{{ product.p_title }}</td>
+        <td>{{ product.p_price }}</td>
+        <td>{{ product.qty }}</td>
+        <td>{{ product.is_active }}</td>
+        <td>
+          <a href="{% url 'seller_update_product' product.pk %}">
+            <button>Update</button>
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+        <tr><td colspan="6">No products yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
