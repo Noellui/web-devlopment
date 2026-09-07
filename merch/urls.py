@@ -21,6 +21,8 @@ urlpatterns = [
     path('seller/products/', views.SellerProductsView.as_view(), name='seller_products'),
     path('seller/add/', views.SellerAddProductView.as_view(), name='seller_add_product'),
     path('seller/update/<int:pk>/', views.SellerUpdateProductView.as_view(), name='seller_update_product'),
+    path('seller/add/', views.SellerAddProductView.as_view(), name='seller_add_product'),
+    path('seller/update/<int:pk>/', views.SellerUpdateProductView.as_view(), name='seller_update_product'),
 
     path('admin/', admin.site.urls),
 

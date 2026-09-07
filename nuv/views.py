@@ -61,10 +61,6 @@ class SellerLoginView(View):
 
 
 class SellerLogoutView(View):
-    """
-    Clears the session via Django's logout(), then redirects to login page.
-    Also flashes a success message confirming the logout.
-    """
 
     def get(self, request):
         logout(request)
@@ -72,7 +68,7 @@ class SellerLogoutView(View):
         return redirect('seller_login')
 
 class SellerDashboardView(LoginRequiredMixin, TemplateView):
-    login_url = '/seller/login/'          # where to redirect unauthenticated users
+    login_url = '/seller/login/'
     template_name = 'seller/dashboard.html'
 
 
@@ -89,6 +85,14 @@ class SellerAddProductView(LoginRequiredMixin, CreateView):
     form_class = ProductForm
     template_name = 'seller/add_product.html'
     success_url = reverse_lazy('seller_products')
+
+    def form_valid(self, form):
+        messages.success(self.request, f'"{form.instance.p_title}" was added successfully.')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Please fix the errors below before saving.')
+        return super().form_invalid(form)
 
 
 class SellerUpdateProductView(LoginRequiredMixin, UpdateView):
