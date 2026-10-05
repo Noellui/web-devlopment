@@ -80,7 +80,10 @@
 
         <div class="nav-right">
             <span class="nav-user">👤 {{ request.user.username }}</span>
-            <a href="{% url 'seller_logout' %}" class="btn-logout">Logout</a>
+            <form method="POST" action="{% url 'seller_logout' %}" style="margin:0">
+                {% csrf_token %}
+                <button type="submit" class="btn-logout" style="border:none;cursor:pointer">Logout</button>
+            </form>
         </div>
     </nav>
     {% if messages %}

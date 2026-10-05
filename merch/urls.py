@@ -13,14 +13,13 @@ urlpatterns = [
     path('accessories/', views.AccessoriesView.as_view(), name='accessories'),
 
     # ─── Seller Auth URLs ────────────────────────────────
-    path('seller/login/', views.SellerLoginView.as_view(), name='seller_login'),
-    path('seller/logout/', views.SellerLogoutView.as_view(), name='seller_logout'),
+   path('seller/register/', views.SellerRegisterView.as_view(), name='seller_register'),
+   path('seller/login/',    views.SellerLoginView.as_view(),    name='seller_login'),
+   path('seller/logout/',   views.SellerLogoutView.as_view(),   name='seller_logout'),
 
     # ─── Seller Protected URLs ───────────────────────────
     path('seller/', views.SellerDashboardView.as_view(), name='seller_dashboard'),
     path('seller/products/', views.SellerProductsView.as_view(), name='seller_products'),
-    path('seller/add/', views.SellerAddProductView.as_view(), name='seller_add_product'),
-    path('seller/update/<int:pk>/', views.SellerUpdateProductView.as_view(), name='seller_update_product'),
     path('seller/add/', views.SellerAddProductView.as_view(), name='seller_add_product'),
     path('seller/update/<int:pk>/', views.SellerUpdateProductView.as_view(), name='seller_update_product'),
 
